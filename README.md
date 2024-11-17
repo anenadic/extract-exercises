@@ -30,7 +30,17 @@ for episode in episode_files:
 
 ## Execution
 
-Copy the Python script into the `episodes` folder of the lesson.
+Copy the Python script into the `episodes` folder of the lesson as: 
 
-Run as: 
 `$ python3 extract_exercises.py *.md > exercises.md` from the `episodes` folder.
+
+Alternatively, you can write a small `bash` script like the one below to extract episodes into separate files:
+
+```bash
+for file in *.md; do 
+    if [ -f "$file" ]; then 
+        echo "Converting $file"
+	python3 extract_exercises.py $file > exercises-$file
+    fi 
+done
+```
